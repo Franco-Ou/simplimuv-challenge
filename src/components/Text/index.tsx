@@ -5,26 +5,26 @@ type TextProps = {
   type: "title" | "subtitle";
   children: React.ReactNode;
   color?: string;
-  align?: "start" | "center" | "end";
-  weight?: string;
+  $align?: "start" | "center" | "end";
+  $weight?: string;
 };
 
 const StyledText = styled.div<TextProps>`
   font-size: ${({ type }) => (type === "title" ? "3.5rem" : "1.5rem")};
-  font-weight: ${({ weight }) => weight};
+  font-weight: ${({ $weight }) => $weight};
   color: ${({ color }) => color};
-  text-align: ${({ align }) => align};
+  text-align: ${({ $align }) => $align};
 `;
 
 const Text: React.FC<TextProps> = ({
   type,
   children,
   color = "black",
-  align = "start",
-  weight = "300",
+  $align = "start",
+  $weight = "300",
 }) => {
   return (
-    <StyledText color={color} type={type} align={align} weight={weight}>
+    <StyledText color={color} type={type} $align={$align} $weight={$weight}>
       {children}
     </StyledText>
   );

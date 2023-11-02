@@ -4,24 +4,24 @@ import Image from "next/image";
 import { StyledCardButton } from "@components/Button/styles";
 
 interface CardProps {
-  imageSrc: string;
+  imageUrl: string;
   productName: string;
-  productPrice: string;
+  price: number;
 }
 
-const Card: FC<CardProps> = ({ imageSrc, productName, productPrice }) => {
+const Card: FC<CardProps> = ({ imageUrl, productName, price }) => {
   return (
     <>
       <StyledCard>
         <Image
-          src={imageSrc}
+          src={imageUrl}
           alt="Street Bob 114"
           width={200}
           height={100}
           style={{ marginBottom: "20px" }}
         />
         <StyledText>{productName}</StyledText>
-        <StyledText>${productPrice}</StyledText>
+        <StyledText>${price}</StyledText>
         <StyledCardButton>Ver Más</StyledCardButton>
       </StyledCard>
     </>

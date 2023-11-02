@@ -18,15 +18,14 @@ export const connectToDatabase = async () => {
     try {
       await client.connect();
       db = client.db("simplimuv-db");
-      console.log("Me conecté a la base")
+      console.log("Me conecté a la base");
     } catch (error) {
       console.error("Error connecting to the database:", error);
-      throw error;
     }
   }
 
   if (!db) {
-    throw new Error("Database connection has not been established.");
+    return;
   }
 
   return db;

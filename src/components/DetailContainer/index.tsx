@@ -20,7 +20,7 @@ const DetailContainer = () => {
         <div style={{ display: "flex" }}>
           <div style={{ marginRight: "10px" }}>
             <Button
-              textAlign="start"
+              $textAlign="start"
               variant="large"
               rounded={true}
               type="primary"
@@ -30,7 +30,7 @@ const DetailContainer = () => {
           </div>
           <div style={{ display: "flex" }}>
             <Button
-              textAlign="start"
+              $textAlign="start"
               variant="large"
               rounded={true}
               type="secondary"

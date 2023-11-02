@@ -7,7 +7,7 @@ type ButtonProps = {
   rounded?: boolean;
   children: React.ReactNode;
   type: "primary" | "secondary";
-  textAlign?: "start" | "center" | "end";
+  $textAlign?: "start" | "center" | "end";
 };
 
 const getWidth = (variant: string | undefined) => {
@@ -36,7 +36,7 @@ const StyledButton = styled.button<ButtonProps>`
   transition: all 0.25s ease-in-out;
   margin-top: 50px;
   margin-bottom: 20px;
-  text-align: ${({ textAlign }) => textAlign};
+  text-align: ${({ $textAlign }) => $textAlign};
 
   &:hover {
     background-color: ${({ type }) =>
@@ -50,7 +50,7 @@ const Button: React.FC<ButtonProps> = ({
   variant,
   type,
   rounded,
-  textAlign = "center",
+  $textAlign = "center",
 }) => {
   return (
     <StyledButton
@@ -58,7 +58,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       rounded={rounded}
       type={type}
-      textAlign={textAlign}
+      $textAlign={$textAlign}
     >
       {children}
     </StyledButton>

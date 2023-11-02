@@ -1,36 +1,28 @@
 import Card from "@components/Card";
 import { StyledCardsContainer } from "./styles";
 import { StyledCenteredContainer } from "src/styles/Globals/Containers";
+import { FC } from "react";
+import { Product } from "src/interfaces/products";
 
-const CardsContainer = () => {
+interface CardsContainerProps {
+  products: Product[];
+}
+
+const CardsContainer: FC<CardsContainerProps> = ({ products }) => {
   return (
     <StyledCenteredContainer>
       <StyledCardsContainer>
-        <Card
-          imageSrc="/images/Street_Bob_114.png"
-          productName="Prueba de nombre"
-          productPrice="15000"
-        />
-        <Card
-          imageSrc="/images/Street_Bob_114.png"
-          productName="Prueba de nombre"
-          productPrice="15000"
-        />
-        <Card
-          imageSrc="/images/Street_Bob_114.png"
-          productName="Prueba de nombre"
-          productPrice="15000"
-        />
-        <Card
-          imageSrc="/images/Street_Bob_114.png"
-          productName="Prueba de nombre"
-          productPrice="15000"
-        />
-        <Card
-          imageSrc="/images/Street_Bob_114.png"
-          productName="Prueba de nombre"
-          productPrice="15000"
-        />
+        {products &&
+          products.map((product) => {
+            return (
+              <Card
+                key={product._id}
+                imageUrl={product.imageUrl}
+                productName={product.productName}
+                price={product.price}
+              />
+            );
+          })}
       </StyledCardsContainer>
     </StyledCenteredContainer>
   );
