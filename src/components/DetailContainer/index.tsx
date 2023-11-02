@@ -17,32 +17,20 @@ const DetailContainer: FC<DetailContainerProps> = ({ product }) => {
   return (
     <StyledDetailContainer>
       <StyledContainer style={{ marginRight: "50px" }}>
-        <Image src={product.imageUrl} width={500} height={340} alt="Product" />
+        <Image src={product.imageUrl} width={550} height={340} alt="Product" />
       </StyledContainer>
       <StyledContainer style={{ display: "flex", flexDirection: "column" }}>
         <Text type="title">{product.productName}</Text>
         <Text type="subtitle">USD {product.price}</Text>
-        <div style={{ display: "flex" }}>
-          <div style={{ marginRight: "10px" }}>
-            <Button
-              $textAlign="start"
-              variant="large"
-              rounded={true}
-              type="primary"
-            >
-              Purchase
-            </Button>
-          </div>
-          <div style={{ display: "flex" }}>
-            <Button
-              $textAlign="start"
-              variant="large"
-              rounded={true}
-              type="secondary"
-            >
-              Add to cart
-            </Button>
-          </div>
+        <div>
+          <Button
+            $textAlign="start"
+            variant="large"
+            rounded={true}
+            type="primary"
+          >
+            Purchase
+          </Button>
         </div>
         <DescriptionContainer>
           <Text type="subtitle">Description</Text>
