@@ -17,6 +17,7 @@ const CardsContainer: FC<CardsContainerProps> = ({ products }) => {
             return (
               <Card
                 key={product._id}
+                id={product._id}
                 imageUrl={product.imageUrl}
                 productName={product.productName}
                 price={product.price}

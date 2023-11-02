@@ -8,7 +8,7 @@ import { connectToDatabase } from "src/lib/db";
 const ProductDetailPage: FC<{ product: Product }> = ({ product }) => {
   return (
     <>
-      <DetailContainer />
+      <DetailContainer product={product} />
     </>
   );
 };

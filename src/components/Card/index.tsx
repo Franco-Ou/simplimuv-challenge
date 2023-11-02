@@ -2,14 +2,18 @@ import React, { FC } from "react";
 import { StyledCard, StyledText } from "./styles";
 import Image from "next/image";
 import { StyledCardButton } from "@components/Button/styles";
+import { useRouter } from "next/router";
 
 interface CardProps {
   imageUrl: string;
   productName: string;
   price: number;
+  id: string;
 }
 
-const Card: FC<CardProps> = ({ imageUrl, productName, price }) => {
+const Card: FC<CardProps> = ({ imageUrl, productName, price, id }) => {
+  const router = useRouter();
+
   return (
     <>
       <StyledCard>
@@ -22,7 +26,9 @@ const Card: FC<CardProps> = ({ imageUrl, productName, price }) => {
         />
         <StyledText>{productName}</StyledText>
         <StyledText>${price}</StyledText>
-        <StyledCardButton>Ver Más</StyledCardButton>
+        <StyledCardButton onClick={() => router.push(`/detail/${id}`)}>
+          Ver Más
+        </StyledCardButton>
       </StyledCard>
     </>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   DescriptionContainer,
   StyledContainer,
@@ -7,16 +7,21 @@ import {
 import Image from "next/image";
 import Text from "@components/Text";
 import Button from "@components/Button";
+import { Product } from "src/interfaces/products";
 
-const DetailContainer = () => {
+interface DetailContainerProps {
+  product: Product;
+}
+
+const DetailContainer: FC<DetailContainerProps> = ({ product }) => {
   return (
     <StyledDetailContainer>
       <StyledContainer style={{ marginRight: "50px" }}>
-        <Image src="/images/bike.png" width={500} height={340} alt="Product" />
+        <Image src={product.imageUrl} width={500} height={340} alt="Product" />
       </StyledContainer>
       <StyledContainer style={{ display: "flex", flexDirection: "column" }}>
-        <Text type="title">Kit Protección</Text>
-        <Text type="subtitle">USD 400</Text>
+        <Text type="title">{product.productName}</Text>
+        <Text type="subtitle">USD {product.price}</Text>
         <div style={{ display: "flex" }}>
           <div style={{ marginRight: "10px" }}>
             <Button
@@ -41,10 +46,7 @@ const DetailContainer = () => {
         </div>
         <DescriptionContainer>
           <Text type="subtitle">Description</Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi libero
-          quis, et alias aspernatur corporis odit eum maxime accusamus,
-          reiciendis eos aperiam deserunt autem dolorem dignissimos nam natus
-          ipsum vitae.
+          {product.description}
         </DescriptionContainer>
       </StyledContainer>
     </StyledDetailContainer>
