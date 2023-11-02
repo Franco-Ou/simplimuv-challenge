@@ -1,11 +1,11 @@
-import Card from "@components/Card";
-import { StyledCardsContainer } from "./styles";
-import { StyledCenteredContainer } from "src/styles/Globals/Containers";
-import { FC } from "react";
-import { Product } from "src/interfaces/products";
+import Card from '@components/Card'
+import { StyledCardsContainer } from './styles'
+import { StyledCenteredContainer } from 'src/styles/Globals/Containers'
+import { FC } from 'react'
+import { Product } from 'src/interfaces/products'
 
 interface CardsContainerProps {
-  products: Product[];
+  products: Product[]
 }
 
 const CardsContainer: FC<CardsContainerProps> = ({ products }) => {
@@ -22,11 +22,11 @@ const CardsContainer: FC<CardsContainerProps> = ({ products }) => {
                 productName={product.productName}
                 price={product.price}
               />
-            );
+            )
           })}
       </StyledCardsContainer>
     </StyledCenteredContainer>
-  );
-};
+  )
+}
 
-export default CardsContainer;
+export default CardsContainer
