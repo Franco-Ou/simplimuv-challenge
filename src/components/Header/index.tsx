@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { StyledHeader } from './styles';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { FlexDivBetween, StyledCenteredContainer } from '../../styles/Globals/Containers';
 import MenuLinks from './MenuLinks';
 import { useRouter } from 'next/router';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { DescriptionContainer, StyledContainer, StyledDetailContainer } from './styles';
 import Image from 'next/image';
 import Text from '@components/Text';

@@ -1,7 +1,7 @@
 import DetailContainer from '@components/DetailContainer';
 import { ObjectId } from 'mongodb';
 import { GetServerSideProps } from 'next';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Product } from 'src/interfaces/products';
 import { connectToDatabase } from 'src/lib/db';
 

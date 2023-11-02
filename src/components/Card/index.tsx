@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { StyledCard, StyledText } from './styles';
 import Image from 'next/image';
 import { StyledCardButton } from '@components/Button/styles';
