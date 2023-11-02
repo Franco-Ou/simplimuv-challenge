@@ -1,11 +1,12 @@
-import Footer from "@components/Footer";
-import Header from "../components/Header";
+import Footer from '@components/Footer';
+import Header from '../components/Header';
+import { FC, ReactNode } from 'react';
 
-const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <Header />
-      <main style={{ minHeight: "70vh" }}>{children}</main>
+      <main style={{ minHeight: '70vh' }}>{children}</main>
       <Footer />
     </>
   );

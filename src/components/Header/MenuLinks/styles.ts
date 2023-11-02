@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const StyledUl = styled.ul`
   list-style-type: none;
@@ -15,6 +15,6 @@ export const StyledLink = styled.a`
   padding: 5px;
 
   &:hover {
-    color: #903DF7;
+    color: #903df7;
   }
 `;

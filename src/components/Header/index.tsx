@@ -1,12 +1,9 @@
-import Image from "next/image";
-import { StyledHeader } from "./styles";
-import React, { FC } from "react";
-import {
-  FlexDivBetween,
-  StyledCenteredContainer,
-} from "../../styles/Globals/Containers";
-import MenuLinks from "./MenuLinks";
-import { useRouter } from "next/router";
+import Image from 'next/image';
+import { StyledHeader } from './styles';
+import React, { FC } from 'react';
+import { FlexDivBetween, StyledCenteredContainer } from '../../styles/Globals/Containers';
+import MenuLinks from './MenuLinks';
+import { useRouter } from 'next/router';
 
 const Header: FC = () => {
   const router = useRouter();
@@ -16,12 +13,12 @@ const Header: FC = () => {
       <StyledCenteredContainer>
         <FlexDivBetween>
           <Image
-            src="/images/logo.webp"
-            alt="SimpliMuv Logo"
+            src='/images/logo.webp'
+            alt='SimpliMuv Logo'
             width={168}
             height={34}
-            onClick={() => router.push("/")}
-            style={{ cursor: "pointer" }}
+            onClick={() => router.push('/')}
+            style={{ cursor: 'pointer' }}
           />
           <MenuLinks />
         </FlexDivBetween>
