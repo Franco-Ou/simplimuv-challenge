@@ -1,9 +1,9 @@
 import DetailContainer from '@components/DetailContainer';
-import { ObjectId } from 'mongodb';
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
 import { Product } from 'src/interfaces/products';
-import { connectToDatabase } from 'src/lib/db';
+import connectMongoDB from 'src/lib/mongoose';
+import Bike from 'src/models/Bike';
 
 const ProductDetailPage: FC<{ product: Product }> = ({ product }) => {
   return (
@@ -17,12 +17,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params as { id: string };
 
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('bikes');
-
-    const product = await collection.findOne({
-      _id: new ObjectId(id)
-    });
+    await connectMongoDB();
+    const product = await Bike.findById(id);
 
     if (!product) {
       return {
@@ -30,13 +26,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       };
     }
 
-    const serializableData = {
-      ...product,
-      _id: product._id.toString()
-    };
-
     return {
-      props: { product: serializableData }
+      props: { product: JSON.parse(JSON.stringify(product)) }
     };
   } catch (error) {
     console.error('Error:', error);
