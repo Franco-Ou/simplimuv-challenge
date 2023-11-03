@@ -16,27 +16,34 @@ const ProductDetailPage: FC<{ product: Product }> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params as { id: string };
 
-  const db = await connectToDatabase();
-  const collection = await db.collection('bikes');
+  try {
+    const db = await connectToDatabase();
+    const collection = await db.collection('bikes');
 
-  const product = await collection.findOne({
-    _id: new ObjectId(id)
-  });
+    const product = await collection.findOne({
+      _id: new ObjectId(id)
+    });
 
-  if (!product) {
+    if (!product) {
+      return {
+        notFound: true
+      };
+    }
+
+    const serializableData = {
+      ...product,
+      _id: product._id.toString()
+    };
+
+    return {
+      props: { product: serializableData }
+    };
+  } catch (error) {
+    console.error('Error:', error);
     return {
       notFound: true
     };
   }
-
-  const serializableData = {
-    ...product,
-    _id: product._id.toString()
-  };
-
-  return {
-    props: { product: serializableData }
-  };
 };
 
 export default ProductDetailPage;

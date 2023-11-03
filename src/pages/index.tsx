@@ -18,19 +18,23 @@ const Home: FC<{ products: Product[] }> = ({ products }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const db = await connectToDatabase();
-  const collection = await db.collection('bikes');
-
-  const products = await collection.find({}).toArray();
-
-  const serializableData = products.map((item: any) => ({
-    ...item,
-    _id: item._id.toString()
-  }));
-
-  return {
-    props: { products: serializableData }
-  };
+  try {
+    const db = await connectToDatabase();
+    const collection = await db.collection('bikes');
+    const products = await collection.find({}).toArray();
+    const serializableData = products.map((item: any) => ({
+      ...item,
+      _id: item._id.toString()
+    }));
+    return {
+      props: { products: serializableData }
+    };
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      props: { products: [] }
+    };
+  }
 };
 
 export default Home;

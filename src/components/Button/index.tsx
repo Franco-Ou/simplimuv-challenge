@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 type ButtonProps = {
-  variant: 'small' | 'medium' | 'large';
+  $variant: 'small' | 'medium' | 'large';
   onClick?: () => void;
-  rounded?: boolean;
+  $rounded?: boolean;
   children: React.ReactNode;
   type: 'primary' | 'secondary';
   $textAlign?: 'start' | 'center' | 'end';
 };
 
-const getWidth = (variant: string | undefined) => {
-  switch (variant) {
+const getWidth = ($variant: string | undefined) => {
+  switch ($variant) {
     case 'small':
       return '100px';
     case 'medium':
@@ -23,8 +23,8 @@ const getWidth = (variant: string | undefined) => {
 };
 
 const StyledButton = styled.button<ButtonProps>`
-  width: ${({ variant }) => getWidth(variant)};
-  border-radius: ${({ rounded }) => (!rounded ? '0px' : '5px')};
+  width: ${({ $variant }) => getWidth($variant)};
+  border-radius: ${({ $rounded }) => (!$rounded ? '0px' : '5px')};
   padding: 1rem;
   background-color: ${({ type }) => (type === 'primary' ? '#903df7' : '#383d42')};
   color: #fff;
@@ -41,9 +41,9 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ onClick, children, variant, type, rounded, $textAlign = 'center' }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, children, $variant, type, $rounded, $textAlign = 'center' }) => {
   return (
-    <StyledButton variant={variant} onClick={onClick} rounded={rounded} type={type} $textAlign={$textAlign}>
+    <StyledButton $variant={$variant} onClick={onClick} $rounded={$rounded} type={type} $textAlign={$textAlign}>
       {children}
     </StyledButton>
   );

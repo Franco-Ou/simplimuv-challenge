@@ -19,7 +19,7 @@ const DetailContainer: FC<DetailContainerProps> = ({ product }) => {
         <Text type='title'>{product.productName}</Text>
         <Text type='subtitle'>USD {product.price}</Text>
         <div>
-          <Button $textAlign='start' variant='large' rounded={true} type='primary'>
+          <Button $textAlign='start' $variant='large' $rounded={true} type='primary'>
             Purchase
           </Button>
         </div>
