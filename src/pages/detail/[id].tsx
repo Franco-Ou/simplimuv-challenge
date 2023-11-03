@@ -1,11 +1,11 @@
 import DetailContainer from '@components/DetailContainer';
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
-import { Product } from 'src/interfaces/products';
+import { ProductProps } from 'src/interfaces/products';
 import connectMongoDB from 'src/lib/mongoose';
-import Bike from 'src/models/Bike';
+import Product from 'src/models/Product';
 
-const ProductDetailPage: FC<{ product: Product }> = ({ product }) => {
+const ProductDetailPage: FC<{ product: ProductProps }> = ({ product }) => {
   return (
     <>
       <DetailContainer product={product} />
@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   try {
     await connectMongoDB();
-    const product = await Bike.findById(id);
+    const product = await Product.findById(id);
 
     if (!product) {
       return {

@@ -1,19 +1,19 @@
-import type { GetServerSideProps } from 'next';
-import Head from 'next/head';
 import CardsContainer from '@components/CardsContainer';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { FC } from 'react';
+import { ProductProps } from 'src/interfaces/products';
 import connectMongoDB from 'src/lib/mongoose';
 import Product from 'src/models/Product';
-import { ProductProps } from 'src/interfaces/products';
 
-const Home: FC<{ products: ProductProps[] }> = ({ products }) => {
+const AccessoriesPage: FC<{ accessories: ProductProps[] }> = ({ accessories }) => {
   return (
     <>
       <Head>
         <title>SimpliMuv</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <CardsContainer products={products} />
+      <CardsContainer products={accessories} />
     </>
   );
 };
@@ -21,16 +21,16 @@ const Home: FC<{ products: ProductProps[] }> = ({ products }) => {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await connectMongoDB();
-    const products = await Product.find();
+    const accessories = await Product.find({ category: 'accessory' });
     return {
-      props: { products: JSON.parse(JSON.stringify(products)) }
+      props: { accessories: JSON.parse(JSON.stringify(accessories)) }
     };
   } catch (error) {
     console.error('Error:', error);
     return {
-      props: { products: [] }
+      props: { accessories: [] }
     };
   }
 };
 
-export default Home;
+export default AccessoriesPage;

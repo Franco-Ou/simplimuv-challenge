@@ -6,7 +6,7 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: ['royalenfieldvicentelopez.com', 'harley-davidson.com.ar']
+    domains: ['royalenfieldvicentelopez.com', 'harley-davidson.com.ar', 'www.harley-davidson.com']
   }
 };
 

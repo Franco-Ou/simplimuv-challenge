@@ -3,10 +3,10 @@ import { DescriptionContainer, StyledContainer, StyledDetailContainer } from './
 import Image from 'next/image';
 import Text from '@components/Text';
 import Button from '@components/Button';
-import { Product } from 'src/interfaces/products';
+import { ProductProps } from 'src/interfaces/products';
 
 interface DetailContainerProps {
-  product: Product;
+  product: ProductProps;
 }
 
 const DetailContainer: FC<DetailContainerProps> = ({ product }) => {

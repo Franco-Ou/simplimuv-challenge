@@ -2,10 +2,10 @@ import Card from '@components/Card';
 import { StyledCardsContainer } from './styles';
 import { StyledCenteredContainer } from 'src/styles/Globals/Containers';
 import { FC } from 'react';
-import { Product } from 'src/interfaces/products';
+import { ProductProps } from 'src/interfaces/products';
 
 interface CardsContainerProps {
-  products: Product[];
+  products: ProductProps[];
 }
 
 const CardsContainer: FC<CardsContainerProps> = ({ products }) => {

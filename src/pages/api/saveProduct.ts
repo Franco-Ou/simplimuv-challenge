@@ -1,26 +1,27 @@
 import connectMongoDB from 'src/lib/mongoose';
 import { NextApiRequest, NextApiResponse } from 'next';
-import Bike from '../../models/Bike';
+import Product from '../../models/Product';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     try {
       await connectMongoDB();
 
-      const { productName, price, description, imageUrl } = req.body;
+      const { productName, price, category, description, imageUrl } = req.body;
 
-      const newBike = new Bike({
+      const newProduct = new Product({
         productName,
         price,
+        category,
         description,
         imageUrl
       });
 
-      const savedBike = await newBike.save();
+      const savedProduct = await newProduct.save();
 
-      res.status(201).json(savedBike);
+      res.status(201).json(savedProduct);
     } catch (error) {
-      console.error('Error adding a Bike:', error);
+      console.error('Error adding a product:', error);
       res.status(500).json({ message: 'Server error' });
     }
   } else {

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const BikeSchema = new Schema(
+const ProductSchema = new Schema(
   {
     productName: {
       type: String,
@@ -10,6 +10,11 @@ const BikeSchema = new Schema(
     },
     price: {
       type: Number,
+      required: true
+    },
+    category: {
+      type: String,
+      enum: ['bike', 'accessory'],
       required: true
     },
     imageUrl: {
@@ -28,6 +33,6 @@ const BikeSchema = new Schema(
   }
 );
 
-const Bike = mongoose.models.Bike || mongoose.model('Bike', BikeSchema);
+const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema);
 
-export default Bike;
+export default Product;
