@@ -5,8 +5,16 @@ import { FC } from 'react';
 import connectMongoDB from 'src/lib/mongoose';
 import Product from 'src/models/Product';
 import { ProductProps } from 'src/interfaces/products';
+import { useRouter } from 'next/router';
+import PaginationButton from '@components/PaginationButton';
 
-const Home: FC<{ products: ProductProps[] }> = ({ products }) => {
+const Home: FC<{ products: ProductProps[]; hasMoreData: boolean }> = ({ products, hasMoreData }) => {
+  const router = useRouter();
+  const queryPage = router.query.page ? Number(router.query.page) : 1;
+  const handlePageChange = (page: number) => {
+    router.push(`/?page=${page}`);
+  };
+
   return (
     <>
       <Head>
@@ -14,16 +22,42 @@ const Home: FC<{ products: ProductProps[] }> = ({ products }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <CardsContainer products={products} />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          margin: '20px'
+        }}
+      >
+        <PaginationButton onClick={() => handlePageChange(1)} disabled={router.query.page === '1'}>
+          First
+        </PaginationButton>
+        <PaginationButton onClick={() => handlePageChange(queryPage - 1)} disabled={queryPage < 2}>
+          Previous
+        </PaginationButton>
+        <PaginationButton onClick={() => handlePageChange(queryPage + 1)} disabled={!hasMoreData}>
+          Next
+        </PaginationButton>
+      </div>
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     await connectMongoDB();
-    const products = await Product.find();
+
+    const page = parseInt(context.query.page as string) || 1;
+    const perPage = 6;
+    const skip = (page - 1) * perPage;
+
+    const products = await Product.find().skip(skip).limit(perPage).exec();
+
+    const totalProducts = await Product.countDocuments().exec();
+    const hasMoreData = skip + perPage < totalProducts;
+
     return {
-      props: { products: JSON.parse(JSON.stringify(products)) }
+      props: { products: JSON.parse(JSON.stringify(products)), hasMoreData }
     };
   } catch (error) {
     console.error('Error:', error);
