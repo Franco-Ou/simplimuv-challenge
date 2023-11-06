@@ -7,12 +7,6 @@ export const StyledCenteredContainer = styled.div`
   padding-right: 60px;
 `;
 
-export const FlexDivCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const FlexDivBetween = styled.div`
   display: flex;
   justify-content: space-between;
