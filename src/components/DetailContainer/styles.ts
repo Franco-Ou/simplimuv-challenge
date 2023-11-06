@@ -23,6 +23,24 @@ export const DescriptionContainer = styled.div`
   padding: 10px;
 `;
 
+export const StyledProductName = styled.p`
+  font-size: 20px;
+  font-weight: 300;
+`;
+
+export const StyledInfoRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 5px 0;
+`;
+
+export const StyledLabel = styled.label`
+  font-weight: 300;
+`;
+
 export const StyledInput = styled.input`
   padding: 8px;
   border-radius: 5px;
