@@ -7,6 +7,7 @@ import Product from 'src/models/Product';
 import { ProductProps } from 'src/interfaces/products';
 import { useRouter } from 'next/router';
 import PaginationButton from '@components/PaginationButton';
+import { PaginationButtonsContainer } from '@components/PaginationButton/styles';
 
 const Home: FC<{ products: ProductProps[]; hasMoreData: boolean }> = ({ products, hasMoreData }) => {
   const router = useRouter();
@@ -22,14 +23,8 @@ const Home: FC<{ products: ProductProps[]; hasMoreData: boolean }> = ({ products
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <CardsContainer products={products} />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          margin: '20px'
-        }}
-      >
-        <PaginationButton onClick={() => handlePageChange(1)} disabled={router.query.page === '1'}>
+      <PaginationButtonsContainer>
+        <PaginationButton onClick={() => handlePageChange(1)} disabled={queryPage < 2}>
           First
         </PaginationButton>
         <PaginationButton onClick={() => handlePageChange(queryPage - 1)} disabled={queryPage < 2}>
@@ -38,7 +33,7 @@ const Home: FC<{ products: ProductProps[]; hasMoreData: boolean }> = ({ products
         <PaginationButton onClick={() => handlePageChange(queryPage + 1)} disabled={!hasMoreData}>
           Next
         </PaginationButton>
-      </div>
+      </PaginationButtonsContainer>
     </>
   );
 };

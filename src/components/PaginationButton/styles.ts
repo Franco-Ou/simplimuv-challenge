@@ -16,3 +16,9 @@ export const StyledPaginationButton = styled.button`
     cursor: alias;
   }
 `;
+
+export const PaginationButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+`;
