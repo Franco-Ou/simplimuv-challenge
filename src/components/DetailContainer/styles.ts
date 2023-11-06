@@ -22,3 +22,15 @@ export const DescriptionContainer = styled.div`
   border-bottom: 1px solid #e5e5e5;
   padding: 10px;
 `;
+
+export const StyledInput = styled.input`
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+`;
+
+export const StyledInputContainer = styled.div`
+  grid-template-columns: 1fr;
+  display: grid;
+`;

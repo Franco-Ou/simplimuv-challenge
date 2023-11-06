@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type ButtonProps = {
-  $variant: 'small' | 'medium' | 'large';
+  $variant: 'small' | 'medium' | 'large' | 'fullWidth';
   onClick?: () => void;
   $rounded?: boolean;
   children: React.ReactNode;
@@ -17,6 +17,8 @@ const getWidth = ($variant: string | undefined) => {
       return '150px';
     case 'large':
       return '200px';
+    case 'fullWidth':
+      return '100%';
     default:
       return 'auto';
   }
