@@ -25,13 +25,7 @@ const DetailContainer: FC<DetailContainerProps> = ({ product }) => {
           <Text type='title'>{product.productName}</Text>
           <Text type='subtitle'>USD {product.price}</Text>
           <div>
-            <Button
-              onClick={() => setPurchaseClicked(true)}
-              $textAlign='start'
-              $variant='large'
-              $rounded={true}
-              type='primary'
-            >
+            <Button onClick={() => setPurchaseClicked(true)} $textAlign='start' $variant='large' $rounded={true}>
               Purchase
             </Button>
           </div>

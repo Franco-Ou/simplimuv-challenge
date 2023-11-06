@@ -10,15 +10,29 @@ import {
 import Text from '@components/Text';
 import Button from '@components/Button';
 import { ProductProps } from 'src/interfaces/products';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface DetailFormProps {
   product: ProductProps;
 }
 
 const DetailForm: FC<DetailFormProps> = ({ product }) => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm({
+    mode: 'onBlur'
+  });
+
+  const onSubmit = async (data) => {
+   
+    console.log(data)
+  };
+
   return (
     <StyledContainer style={{ display: 'flex', flexDirection: 'column' }}>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Text $margin='10px 0' type='subtitle' $weight='300'>
           Detail Quotation
         </Text>
@@ -28,18 +42,36 @@ const DetailForm: FC<DetailFormProps> = ({ product }) => {
           <StyledLabel>${product.price}</StyledLabel>
         </StyledInfoRow>
         <StyledInputContainer>
-          <StyledLabel htmlFor='name'>Name</StyledLabel>
-          <StyledInput name='name' type='text' />
+          <StyledLabel htmlFor='name_input'>Name</StyledLabel>
+          <StyledInput
+            type='text'
+            {...register('name_input', {
+              required: 'Name is required'
+            })}
+          />
           <StyledLabel htmlFor='lastname'>Lastname</StyledLabel>
-          <StyledInput name='lastname' type='text' />
-          <StyledLabel htmlFor='email'>Email</StyledLabel>
-          <StyledInput name='email' type='email' />
-          <StyledLabel htmlFor='phone'>Phone</StyledLabel>
-          <StyledInput name='phone' type='number' />
+          <StyledInput
+            type='text'
+            {...register('lastname_input', {
+              required: 'Lastname is required'
+            })}
+          />
+          <StyledLabel htmlFor='email_input'>Email</StyledLabel>
+          <StyledInput
+            type='email'
+            {...register('email_input', {
+              required: 'Email is required'
+            })}
+          />
+          <StyledLabel htmlFor='phone_input'>Phone</StyledLabel>
+          <StyledInput
+            type='number'
+            {...register('phone_input', {
+              required: 'Phone is required'
+            })}
+          />
         </StyledInputContainer>
-        <Button type='primary' $variant='fullWidth' $rounded={true}>
-          Submit
-        </Button>
+        <button type='submit'>Submit</button>
       </form>
     </StyledContainer>
   );

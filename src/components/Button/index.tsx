@@ -5,7 +5,6 @@ type ButtonProps = {
   onClick?: () => void;
   $rounded?: boolean;
   children: React.ReactNode;
-  type: 'primary' | 'secondary';
   $textAlign?: 'start' | 'center' | 'end';
 };
 
@@ -28,7 +27,7 @@ const StyledButton = styled.button<ButtonProps>`
   width: ${({ $variant }) => getWidth($variant)};
   border-radius: ${({ $rounded }) => (!$rounded ? '0px' : '5px')};
   padding: 1rem;
-  background-color: ${({ type }) => (type === 'primary' ? '#903df7' : '#383d42')};
+  background-color: #903df7;
   color: #fff;
   border: none;
   font-family: Roboto;
@@ -39,13 +38,13 @@ const StyledButton = styled.button<ButtonProps>`
   text-align: ${({ $textAlign }) => $textAlign};
 
   &:hover {
-    background-color: ${({ type }) => (type === 'primary' ? '#8325f7' : '#121314')};
+    background-color: #8325f7;
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ onClick, children, $variant, type, $rounded, $textAlign = 'center' }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, children, $variant, $rounded, $textAlign = 'center' }) => {
   return (
-    <StyledButton $variant={$variant} onClick={onClick} $rounded={$rounded} type={type} $textAlign={$textAlign}>
+    <StyledButton $variant={$variant} onClick={onClick} $rounded={$rounded} $textAlign={$textAlign}>
       {children}
     </StyledButton>
   );
