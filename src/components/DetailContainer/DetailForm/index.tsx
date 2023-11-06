@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { Dispatch, FC, SetStateAction, useState } from 'react';
 import {
   StyledContainer,
   StyledInfoRow,
@@ -10,24 +10,20 @@ import {
 import Text from '@components/Text';
 import Button from '@components/Button';
 import { ProductProps } from 'src/interfaces/products';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 interface DetailFormProps {
   product: ProductProps;
+  setFormSent: Dispatch<SetStateAction<boolean>>;
 }
 
-const DetailForm: FC<DetailFormProps> = ({ product }) => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit
-  } = useForm({
+const DetailForm: FC<DetailFormProps> = ({ product, setFormSent }) => {
+  const { register, handleSubmit } = useForm({
     mode: 'onBlur'
   });
 
-  const onSubmit = async (data) => {
-   
-    console.log(data)
+  const onSubmit = async (data: any) => {
+    setFormSent(true);
   };
 
   return (
@@ -71,7 +67,9 @@ const DetailForm: FC<DetailFormProps> = ({ product }) => {
             })}
           />
         </StyledInputContainer>
-        <button type='submit'>Submit</button>
+        <Button type='submit' $variant='fullWidth' $rounded={true}>
+          Submit
+        </Button>
       </form>
     </StyledContainer>
   );

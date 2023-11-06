@@ -6,6 +6,7 @@ type ButtonProps = {
   $rounded?: boolean;
   children: React.ReactNode;
   $textAlign?: 'start' | 'center' | 'end';
+  type?: 'button' | 'submit' | 'reset';
 };
 
 const getWidth = ($variant: string | undefined) => {
@@ -42,9 +43,9 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ onClick, children, $variant, $rounded, $textAlign = 'center' }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, children, $variant, $rounded, $textAlign = 'center', ...rest }) => {
   return (
-    <StyledButton $variant={$variant} onClick={onClick} $rounded={$rounded} $textAlign={$textAlign}>
+    <StyledButton $variant={$variant} onClick={onClick} $rounded={$rounded} $textAlign={$textAlign} {...rest}>
       {children}
     </StyledButton>
   );

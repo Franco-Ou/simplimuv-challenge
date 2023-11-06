@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { styled } from 'styled-components';
 
 export const StyledDetailContainer = styled.section`
@@ -15,6 +16,11 @@ export const StyledDetailContainer = styled.section`
 export const StyledContainer = styled.div`
   width: 50%;
   margin-bottom: 40px;
+
+  @media (max-width: 700px) {
+    width: unset;
+    align-items: center;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
@@ -35,6 +41,16 @@ export const StyledInfoRow = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
   padding: 5px 0;
+`;
+
+export const StyledImage = styled.img`
+  width: 550px;
+  height: 340px;
+
+  @media (max-width: 700px) {
+    width: 360px;
+    height: 200px;
+  }
 `;
 
 export const StyledLabel = styled.label`
