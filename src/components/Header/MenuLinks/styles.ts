@@ -17,11 +17,11 @@ export const StyledLi = styled.li`
   margin: 16px;
 `;
 
-export const StyledLink = styled.a<{ activePage: boolean }>`
+export const StyledLink = styled.a<{ $activePage: boolean }>`
   cursor: pointer;
   transition: all 0.35s ease-in-out;
   padding: 5px;
-  color: ${({ activePage }) => (activePage ? '#903df7' : '#000')};
+  color: ${({ $activePage }) => ($activePage ? '#903df7' : '#000')};
 
   &:hover {
     color: #903df7;

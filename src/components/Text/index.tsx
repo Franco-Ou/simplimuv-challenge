@@ -9,7 +9,7 @@ type TextProps = {
 };
 
 const StyledText = styled.div<TextProps>`
-  font-size: ${({ type }) => (type === 'title' ? '3.5rem' : '1.5rem')};
+  font-size: ${({ type }) => (type === 'title' ? '3.5rem' : '1.8rem')};
   font-weight: ${({ $weight }) => $weight};
   color: ${({ color }) => color};
   text-align: ${({ $align }) => $align};

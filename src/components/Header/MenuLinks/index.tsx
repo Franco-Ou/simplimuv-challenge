@@ -7,12 +7,12 @@ const MenuLinks = () => {
   return (
     <StyledUl>
       <StyledLi>
-        <StyledLink activePage={router.pathname === '/bikes'} onClick={() => router.push('/bikes')}>
+        <StyledLink $activePage={router.pathname === '/bikes'} onClick={() => router.push('/bikes')}>
           Bikes
         </StyledLink>
       </StyledLi>
       <StyledLi>
-        <StyledLink activePage={router.pathname === '/accessories'} onClick={() => router.push('/accessories')}>
+        <StyledLink $activePage={router.pathname === '/accessories'} onClick={() => router.push('/accessories')}>
           Accessories
         </StyledLink>
       </StyledLi>
