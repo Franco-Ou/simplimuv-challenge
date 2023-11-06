@@ -17,4 +17,9 @@ export const FlexDivBetween = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 `;

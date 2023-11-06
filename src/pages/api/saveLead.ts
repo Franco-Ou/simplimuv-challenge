@@ -1,5 +1,5 @@
 import connectMongoDB from 'src/lib/mongoose';
-import Lead from '../../models/Lead'; // Import your Mongoose model
+import Lead from '../../models/Lead';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
