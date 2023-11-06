@@ -20,7 +20,7 @@ const DetailContainer: FC<DetailContainerProps> = ({ product }) => {
     <>
       {formSent ? (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Image objectFit='cover' src={'/images/purple-check.png'} alt='Check' width={130} height={110} />
+          <Image src={'/images/purple-check.png'} alt='Check' width={130} height={110} />
           <Text type='title'>Thank you!</Text>
           <Button onClick={() => router.push('/')} $variant='large' $rounded>
             Go to home

@@ -10,7 +10,8 @@ import {
 import Text from '@components/Text';
 import Button from '@components/Button';
 import { ProductProps } from 'src/interfaces/products';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import axios from 'axios';
 
 interface DetailFormProps {
   product: ProductProps;
@@ -22,8 +23,19 @@ const DetailForm: FC<DetailFormProps> = ({ product, setFormSent }) => {
     mode: 'onBlur'
   });
 
-  const onSubmit = async (data: any) => {
-    setFormSent(true);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const body = {
+      name: data.name_input,
+      lastName: data.lastname_input,
+      email: data.email_input,
+      phone: String(data.phone_input)
+    };
+    try {
+      await axios.post('/api/saveLead', body);
+      setFormSent(true);
+    } catch (error) {
+      console.log('Error: ', error);
+    }
   };
 
   return (
